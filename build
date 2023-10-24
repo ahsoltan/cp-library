@@ -3,6 +3,7 @@
 src=(
   main.cpp
   data/treap.cpp
+  flow/dinic.cpp
   flow/matching.cpp
   flow/mcmf.cpp
   graph/scc.cpp

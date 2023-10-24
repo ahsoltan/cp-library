@@ -1,8 +1,7 @@
-template<typename F>
 struct dinic {
   struct edge {
     int to, rev;
-    F cap;
+    int cap;
   };
 
   int n;
@@ -16,7 +15,7 @@ struct dinic {
     it.resize(n);
   }
 
-  void add_edge(int u, int v, F cap) {
+  void add_edge(int u, int v, int cap) {
     int i = ssize(adj[u]);
     int j = ssize(adj[v]);
     if (u == v) {
@@ -47,15 +46,15 @@ struct dinic {
     return false;
   }
 
-  F dfs(int u, int t, F cap) {
+  int dfs(int u, int t, int cap) {
     if (u == t) {
       return cap;
     }
-    F flow = 0;
+    int flow = 0;
     for (int& i = it[u]; i < ssize(adj[u]); i++) {
       edge& e = adj[u][i];
       if (e.cap > 0 && lvl[u] + 1 == lvl[e.to]) {
-        F add = dfs(e.to, t, min(cap - flow, e.cap));
+        int add = dfs(e.to, t, min(cap - flow, e.cap));
         e.cap -= add;
         adj[e.to][e.rev].cap += add;
         flow += add;
@@ -68,8 +67,8 @@ struct dinic {
     return flow;
   }
 
-  F build(int s, int t, F cap) {
-    F flow = 0;
+  int build(int s, int t, int cap) {
+    int flow = 0;
     while (flow < cap && bfs(s, t)) {
       it.assign(n, 0);
       flow += dfs(s, t, cap - flow);
