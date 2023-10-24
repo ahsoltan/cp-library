@@ -34,7 +34,7 @@ struct matching {
         if (pa[j] == -1) {
           res = true;
         } else if (lvl[pa[j]] == -1) {
-          lvl[pa[j]] = lvl[q[i]] + 1;
+          lvl[pa[j]] = lvl[u] + 1;
           q.push(pa[j]);
         }
       }
