@@ -47,8 +47,6 @@ struct MCMF {
     c += dst[t];
   }
 
-  // Finds shortest paths from s
-  // If edges are non-negative or the network is a DAG can be done quicker
   bool init(int s, int t) {
     vector<int> dst(n, INF);
     queue<int> q;
