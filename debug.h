@@ -1,18 +1,11 @@
+#pragma once
+
 #include <boost/preprocessor.hpp>
 
-template<typename A, typename B>
-ostream& operator<<(ostream& os, const pair<A, B>& x);
+ostream& operator<<(ostream& os, const pair<auto, auto>& x);
 
-template<typename T, typename>
-ostream& operator<<(ostream& os, const T& x);
-
-template<typename A, typename B>
-ostream& operator<<(ostream& os, const pair<A, B>& x) {
-  return os << '(' << x.first << ", " << x.second << ')';
-}
-
-template<typename T, typename = enable_if_t<!is_same_v<T, string>, typename T::value_type>>
-ostream& operator<<(ostream& os, const T& x) {
+template<typename T, typename = T::value_type>
+ostream& operator<<(ostream& os, const T& x) requires (!same_as<T, string>) {
   os << '{';
   string sep;
   for (const auto& v : x) {
@@ -20,6 +13,10 @@ ostream& operator<<(ostream& os, const T& x) {
     sep = ", ";
   }
   return os << '}';
+}
+
+ostream& operator<<(ostream& os, const pair<auto, auto>& x) {
+  return os << '(' << x.first << ", " << x.second << ')';
 }
 
 #define PRINT(r, _, i, x) << BOOST_PP_IF(i, " [", '[') << BOOST_PP_STRINGIZE(x) << ": " << (x) << ']'

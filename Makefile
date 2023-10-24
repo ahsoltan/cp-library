@@ -1,4 +1,4 @@
-SOURCES := main.cpp data/treap.cpp data/ordered_set.cpp flow/dinic.cpp flow/matching.cpp flow/mcmf.cpp graph/scc.cpp string/strings.cpp
+SOURCES := icpc.cpp data/treap.cpp data/ordered_set.cpp flow/dinic.cpp flow/matching.cpp flow/mcmf.cpp graph/scc.cpp string/strings.cpp
 
 pdf: ps
 	ps2pdf lib.ps lib.pdf
