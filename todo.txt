@@ -4,4 +4,3 @@ RMQ
 LCA & HLD
 BIT
 Segtree searching
-Ordered set
