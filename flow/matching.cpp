@@ -66,14 +66,4 @@ struct matching {
     }
     return res;
   }
-
-  vector<pair<int, int>> edges() {
-    vector<pair<int, int>> res;
-    for (int i = 0; i < n; i++) {
-      if (pb[i] != -1) {
-        res.push_back({i, pb[i]});
-      }
-    }
-    return res;
-  }
 };

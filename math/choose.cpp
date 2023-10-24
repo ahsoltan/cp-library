@@ -1,7 +1,7 @@
 vector<mint> _f = {1}, _fi = {1};
 
 void init(int n) {
-  int k = ssize(f);;
+  int k = ssize(_f);
   if (n < k) {
     return;
   }
