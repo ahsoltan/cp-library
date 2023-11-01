@@ -1,7 +1,3 @@
-#pragma once
-
-#include <boost/preprocessor.hpp>
-
 ostream& operator<<(ostream& os, const pair<auto, auto>& x);
 
 template<typename T, typename = T::value_type>
@@ -19,5 +15,9 @@ ostream& operator<<(ostream& os, const pair<auto, auto>& x) {
   return os << '(' << x.first << ", " << x.second << ')';
 }
 
-#define PRINT(r, _, i, x) << BOOST_PP_IF(i, " [", '[') << BOOST_PP_STRINGIZE(x) << ": " << (x) << ']'
-#define debug(...) cerr BOOST_PP_SEQ_FOR_EACH_I(PRINT, _, BOOST_PP_VARIADIC_TO_SEQ(__VA_ARGS__)) << '\n'
+void __print(const auto&... x) {
+  ((cerr << ' ' << x), ...);
+  cerr << endl;
+}
+
+#define debug(...) cerr << '[' << #__VA_ARGS__ << "]:"; __print(__VA_ARGS__)
