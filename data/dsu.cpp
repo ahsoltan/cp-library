@@ -30,12 +30,4 @@ struct DSU {
     cnt--;
     return true;
   }
-
-  vector<vector<int>> groups() {
-    vector<vector<int>> res(cnt);
-    for (int i = 0; i < n; i++) {
-      res[get(i)].push_back(i);
-    }
-    return res;
-  }
 };
