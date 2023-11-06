@@ -1,6 +1,3 @@
 FFT
-Suffix array & LCP
-RMQ
-LCA & HLD
-BIT
-Segtree searching
+Suffix array
+Tree template
