@@ -1,3 +1,5 @@
-FFT
+NTT (not cooley-turkey?)
 Suffix array
-Tree template
+Tree (O(n) construction binary lifting?) (HLD?) (centroid decomp?)
+2SAT
+Geometry
