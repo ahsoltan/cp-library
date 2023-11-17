@@ -1,5 +1,23 @@
-NTT (not cooley-turkey?)
-Suffix array
-Tree (O(n) construction binary lifting?) (HLD?) (centroid decomp?)
-2SAT
-Geometry
+Data structures:
+* Treap
+? Link-cut tree
+
+Flows:
+? Push-relabel
+
+Graphs:
+* Trees (LCA/HLD/centroids)
+- 2SAT
+* Bridges
+
+Geometry:
+* Points
+* Convex hull
+? Halfplane intersection
+
+Numeric:
+* NTT
+
+Strings:
+- Suffix array
+? Suffix automaton
