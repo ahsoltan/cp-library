@@ -1,9 +1,7 @@
 Data structures:
 * Treap
+- BIT (1D/2D)
 ? Link-cut tree
-
-Flows:
-? Push-relabel
 
 Graphs:
 * Trees (LCA/HLD/centroids)
