@@ -11,6 +11,7 @@ Graphs:
 * Trees (LCA/HLD/centroids)
 - 2SAT
 * Bridges
+* Directed MST
 
 Geometry:
 * Points
