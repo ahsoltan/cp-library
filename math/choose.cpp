@@ -1,6 +1,6 @@
 vector<mint> _f = {1}, _fi = {1};
 
-void init(int n) {
+void _init(int n) {
   int k = ssize(_f);
   if (n < k) {
     return;
@@ -18,12 +18,12 @@ void init(int n) {
 }
 
 mint fact(int n) {
-  init(n);
+  _init(n);
   return _f[n];
 }
 
 mint inv_fact(int n) {
-  init(n);
+  _init(n);
   return _fi[n];
 }
 
@@ -31,6 +31,6 @@ mint choose(int n, int k) {
   if (n < k || k < 0) {
     return 0;
   }
-  init(n);
+  _init(n);
   return _f[n] * _fi[k] * _fi[n - k];
 }
