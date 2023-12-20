@@ -1,6 +1,6 @@
 Contest:
-* tmpfs
-* LaTeX
+* PDF
+* Pragmas
 
 Data structures:
 * Treap
@@ -18,8 +18,8 @@ Geometry:
 * Convex hull
 ? Halfplane intersection
 
-Numeric:
-* NTT
+Math:
+* FFT/NTT
 
 Strings:
 - Suffix array
