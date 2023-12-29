@@ -16,8 +16,8 @@ struct chash {
   }
 };
 
-template<typename T>
-using hash_map = gp_hash_table<ll, T, chash>;
+template<typename A, typename B>
+using hash_map = gp_hash_table<A, B, chash>;
 
 template<typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
