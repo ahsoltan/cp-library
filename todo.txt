@@ -19,7 +19,7 @@ Geometry:
 ? Halfplane intersection
 
 Math:
-* FFT/NTT
+* Polynomials
 
 Strings:
 - Suffix array

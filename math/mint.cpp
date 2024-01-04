@@ -1,7 +1,7 @@
 const int MOD = 998244353;
  
 struct mint {
-  int val;
+  uint32_t val;
  
   mint(ll v = 0) {
     v %= MOD;
@@ -28,7 +28,7 @@ struct mint {
   }
  
   mint& operator*=(const mint& other) {
-    val = 1ll * val * other.val % MOD;
+    val = (uint64_t)val * other.val % MOD;
     return *this;
   }
  
