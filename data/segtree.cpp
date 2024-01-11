@@ -1,21 +1,18 @@
 struct segtree {
   struct node {
-    
+
   };
 
   int n;
-  vector<node> tree;
+  vector<node> t;
 
-  segtree(int _n = 0) {
-    n = 1;
-    while (n < _n) {
-      n *= 2;
-    }
-    tree.resize(2 * n);
+  segtree(int _n) {
+    n = _n;
+    t.resize(2 * n - 1);
   }
 
   node join(const node& a, const node& b) {
-    
+
   }
 
   void push(int u, int len) {
@@ -23,34 +20,37 @@ struct segtree {
   }
 
   template<typename F>
-  void run(int u, int ul, int ur, int l, int r, bool mod, F&& f) {
-    if (ul >= l && ur <= r) {
-      f(u, ur - ul + 1);
+  void rec(int u, int lo, int hi, int l, int r, bool mod, F&& f) {
+    if (l <= lo && hi <= r) {
+      f(u, hi - lo);
       return;
     }
-    if (ul > r || ur < l) {
-      return;
+    push(u, hi - lo);
+    int mid = (lo + hi) / 2;
+    if (mid > l) {
+      rec(u + 1, lo, mid, l, r, mod, f);
     }
-    push(u, ur - ul + 1);
-    int mid = (ul + ur) / 2;
-    run(2 * u, ul, mid, l, r, mod, f);
-    run(2 * u + 1, mid + 1, ur, l, r, mod, f);
+    if (mid < r) {
+      rec(u + (mid - lo) * 2, mid, hi, l, r, mod, f);
+    }
     if (mod) {
-      tree[u] = join(tree[2 * u], tree[2 * u + 1]);
+      t[u] = join(t[u + 1], t[u + (mid - lo) * 2]);
     }
   }
 
   node get(int l, int r) {
+    bool in = false;
     node res;
-    run(1, 0, n - 1, l, r, false, [&] (int u, int) {
-      res = join(res, tree[u]);
+    rec(0, 0, n, l, r, false, [&] (int u, int) {
+      res = in ? join(res, t[u]) : t[u];
+      in = true;
     });
     return res;
   }
 
   void modify(int l, int r) {
-    run(1, 0, n - 1, l, r, true, [&] (int u, int len) {
-      
+    rec(0, 0, n, l, r, true, [&] (int u, int len) {
+
     });
   }
 };
