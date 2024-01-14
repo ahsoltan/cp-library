@@ -23,6 +23,5 @@ Math:
 ? Polynomials
 
 Strings:
-- Suffix array
 ? Suffix automaton
 - Palindrome tree
