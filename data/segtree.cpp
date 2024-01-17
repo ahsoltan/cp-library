@@ -8,7 +8,7 @@ struct segtree {
 
   segtree(int _n) {
     n = _n;
-    t.resize(2 * n - 1);
+    t.resize(max(0, 2 * n - 1));
   }
 
   node join(const node& a, const node& b) {
