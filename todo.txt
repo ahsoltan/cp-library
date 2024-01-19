@@ -21,6 +21,7 @@ Geometry:
 
 Math:
 ? Polynomials
+? Berlekamp massey and linear recurrences
 
 Strings:
 ? Suffix automaton
