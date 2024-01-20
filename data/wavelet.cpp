@@ -1,72 +1,58 @@
-struct node {
-  int lo, hi;
-  node* l = nullptr;
-  node* r = nullptr;
-  vector<int> b;
+vector<int> _b;
 
-  node(const vector<int>& v, int _lo, int _hi) {
+struct node {
+  int lo, hi, s;
+  node* lc = nullptr;
+  node* rc = nullptr;
+
+  node(int _lo, int _hi, auto st, auto ed) {
     lo = _lo;
     hi = _hi;
-    if (lo == hi) {
+    if (lo + 1 == hi) {
       return;
     }
-    int n = ssize(v);
-    b.resize(n + 1);
-    vector<int> vl, vr;
     int mid = (lo + hi) / 2;
-    for (int i = 0; i < n; i++) {
-      b[i + 1] = b[i];
-      if (v[i] <= mid) {
-        vl.push_back(v[i]);
-        b[i + 1]++;
-      } else {
-        vr.push_back(v[i]);
-      }
+    s = ssize(_b);
+    _b.push_back(0);
+    for (auto it = st; it != ed; it++) {
+      _b.push_back(_b.back() + (*it < mid));
     }
-    if (!vl.empty()) {
-      l = new node(vl, lo, mid);
+    auto k = stable_partition(st, ed, [&] (int x) {
+      return x < mid;
+    });
+    if (k != st) {
+      lc = new node(lo, mid, st, k);
     }
-    if (!vr.empty()) {
-      r = new node(vr, mid + 1, hi);
+    if (k != ed) {
+      rc = new node(mid, hi, k, ed);
     }
   }
 
-  int kth(int ql, int qr, int k) {
-    if (lo == hi) {
+  int kth(int l, int r, int k) {
+    if (lo + 1 == hi) {
       return lo;
     }
-    int c = b[qr + 1] - b[ql];
-    if (k < c) {
-      return l->kth(b[ql], b[qr + 1] - 1, k);
+    int x = _b[s + l];
+    int y = _b[s + r];
+    if (k < y - x) {
+      return lc->kth(x, y, k);
     }
-    return r->kth(ql - b[ql], qr - b[qr + 1], k - c);
+    return rc->kth(l - x, r - y, k - (y - x));
   }
 
-  int count(int ql, int qr, int k) {
-    if (ql > qr) {
+  int leq(int l, int r, int k) {
+    if (k < lo || hi <= k) {
       return 0;
     }
-    if (lo == hi) {
-      return qr - ql + 1;
+    if (lo + 1 == hi) {
+      return r - l;
     }
+    int x = _b[s + l];
+    int y = _b[s + r];
     int mid = (lo + hi) / 2;
-    if (k <= mid) {
-      return l ? l->count(b[ql], b[qr + 1] - 1, k) : 0;
+    if (k < mid) {
+      return (lc ? lc->leq(x, y, k) : 0);
     }
-    return r ? r->count(ql - b[ql], qr - b[qr + 1], k) : 0;
-  }
-
-  int leq(int ql, int qr, int k) {
-    if (lo > k) {
-      return 0;
-    }
-    if (hi <= k) {
-      return qr - ql + 1;
-    }
-    int mid = (lo + hi) / 2;
-    if (k <= mid) {
-      return l ? l->leq(b[ql], b[qr + 1] - 1, k) : 0;
-    }
-    return b.back() + (r ? r->leq(ql - b[ql], qr - b[qr + 1], k) : 0);
+    return (y - x) + (rc ? rc->leq(l - x, r - y, k) : 0);
   }
 };
