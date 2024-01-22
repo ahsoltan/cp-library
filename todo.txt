@@ -25,3 +25,11 @@ Math:
 Strings:
 ? Suffix automaton
 - Palindrome tree
+
+Other libraries:
+- https://github.com/ecnerwala/cp-book/
+- https://github.com/dacin21/dacin21_codebook
+- https://github.com/nealwu/competitive-programming
+- https://github.com/the-tourist/algo
+- https://github.com/bqi343/cp-notebook
+- https://github.com/kth-competitive-programming/kactl
