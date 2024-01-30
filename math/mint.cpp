@@ -1,4 +1,4 @@
-const int MOD = 998244353;
+const uint32_t MOD = 998244353;
  
 struct mint {
   uint32_t val;
