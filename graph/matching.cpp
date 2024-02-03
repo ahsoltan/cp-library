@@ -54,16 +54,16 @@ struct matching {
     return false;
   }
 
-  int build() {
-    int res = 0;
+  int match() {
+    int ans = 0;
     while (bfs()) {
       it.assign(n, 0);
       for (int i = 0; i < n; i++) {
         if (pb[i] == -1 && dfs(i)) {
-          res++;
+          ans++;
         }
       }
     }
-    return res;
+    return ans;
   }
 };

@@ -50,29 +50,29 @@ struct dinic {
     if (u == t) {
       return cap;
     }
-    int flow = 0;
+    int ans = 0;
     for (int& i = it[u]; i < ssize(adj[u]); i++) {
       edge& e = adj[u][i];
       if (e.cap > 0 && lvl[u] + 1 == lvl[e.to]) {
-        int add = dfs(e.to, t, min(cap - flow, e.cap));
+        int add = dfs(e.to, t, min(cap - ans, e.cap));
         e.cap -= add;
         adj[e.to][e.rev].cap += add;
-        flow += add;
+        ans += add;
       }
-      if (flow == cap) {
-        return flow;
+      if (ans == cap) {
+        return ans;
       }
     }
     lvl[u] = -1;
-    return flow;
+    return ans;
   }
 
-  int build(int s, int t, int cap) {
-    int flow = 0;
-    while (flow < cap && bfs(s, t)) {
+  int flow(int s, int t, int cap) {
+    int ans = 0;
+    while (ans < cap && bfs(s, t)) {
       it.assign(n, 0);
-      flow += dfs(s, t, cap - flow);
+      ans += dfs(s, t, cap - ans);
     }
-    return flow;
+    return ans;
   }
 };
