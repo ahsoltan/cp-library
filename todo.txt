@@ -14,12 +14,8 @@ Implement:
 * Treap
 
 Fix:
-* Clean up MCMF (add min cost dinic?)
+* Add type template to dinic/MCMF
 * Add min cut and stuff to dinic/matching
-
-ICPC:
-* PDF
-* Compressed template 
 
 Libraries:
 * https://github.com/ecnerwala/cp-book/
