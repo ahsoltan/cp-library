@@ -9,9 +9,11 @@ Data structures:
 
 Graphs:
 * Trees (LCA/HLD/centroids)
-- 2SAT
+* 2SAT
 * Bridges
 - Directed MST
+= Cleanup MCMF (implement min cost dinic?)
+= Add min cut etc to dinic/matching
 
 Geometry:
 * Points
