@@ -28,3 +28,4 @@ Libraries:
 * https://github.com/the-tourist/algo
 * https://github.com/bqi343/cp-notebook
 * https://github.com/kth-competitive-programming/kactl
+* https://github.com/cuber2460/acmlib07/
