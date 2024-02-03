@@ -1,37 +1,30 @@
-Contest:
-* PDF
-* Pragmas
-
-Data structures:
-* Treap
-- BIT (1D/2D)
-? Link-cut tree
-
-Graphs:
-* Trees (LCA/HLD/centroids)
-* 2SAT
-* Bridges
-- Directed MST
-= Cleanup MCMF (implement min cost dinic?)
-= Add min cut etc to dinic/matching
-
-Geometry:
-* Points
-* Convex hull
-? Halfplane intersection
-
-Math:
-? Polynomials
-? Berlekamp massey and linear recurrences
-
-Strings:
-? Suffix automaton
+Learn:
+* DMST
+* BIT (1D/2D)
+- Link-cut tree
+- Suffix automaton
 - Palindrome tree
+- Polynomial operations
+- Berlekamp-Massey (linear algebra)
+- CRT
 
-Other libraries:
-- https://github.com/ecnerwala/cp-book/
-- https://github.com/dacin21/dacin21_codebook
-- https://github.com/nealwu/competitive-programming
-- https://github.com/the-tourist/algo
-- https://github.com/bqi343/cp-notebook
-- https://github.com/kth-competitive-programming/kactl
+Implement:
+* 2-SAT
+* Pragmas
+* Treap
+
+Fix:
+* Clean up MCMF (add min cost dinic?)
+* Add min cut and stuff to dinic/matching
+
+ICPC:
+* PDF
+* Compressed template 
+
+Libraries:
+* https://github.com/ecnerwala/cp-book/
+* https://github.com/dacin21/dacin21_codebook
+* https://github.com/nealwu/competitive-programming
+* https://github.com/the-tourist/algo
+* https://github.com/bqi343/cp-notebook
+* https://github.com/kth-competitive-programming/kactl
