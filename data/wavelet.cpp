@@ -48,15 +48,14 @@ struct node {
   }
 
   int freq(int a, int b, int k) {
-    if (hi <= k || k < lo) {
+    if (k < lo || hi <= k) {
       return 0;
     }
     if (lo + 1 == hi) {
       return b - a;
     }
-    int mid = (lo + hi) / 2;
     int x = s[a];
     int y = s[b];
-    return k < mid ? (l ? l->freq(x, y, k) : 0) : (r ? r->freq(a - x, b - y, k) : 0);
+    return (l ? l->freq(x, y, k) : 0) + (r ? r->freq(a - x, b - y, k) : 0);
   }
 };
