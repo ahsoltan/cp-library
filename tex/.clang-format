@@ -1,0 +1,9 @@
+ColumnLimit: 63
+AllowShortBlocksOnASingleLine: Always
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+SeparateDefinitionBlocks: Never
+# RemoveBracesLLVM: true
+PointerAlignment: Left
