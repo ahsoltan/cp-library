@@ -71,7 +71,10 @@
 \newcommand*{\cfile}[2][C++]{%
   \smallskip
   \hrule
-  \input{|"python preprocess.py #2 #1"}
+  \typeout{Formatting #2}
+  \immediate\write18{trash -f build/tmp.tex}
+  \immediate\write18{python3 format.py #2 #1 build/tmp.tex}
+  \input{build/tmp.tex}
 }
 
 % Big O symbol
