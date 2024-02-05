@@ -1,7 +1,9 @@
-BUILD_DIR=$(CURDIR)/build
+cp-library: build main.tex style.sty preprocess.py .clang-format
+	pdflatex -shell-escape -output-directory build/ main.tex && cp build/main.pdf cp-library.pdf
 
-pdf: tex
-	cd $(BUILD_DIR) && pdflatex main.tex && cp main.pdf ../cp-library.pdf
+build:
+	mkdir -p build/
 
-tex: main.py temp.tex
-	mkdir -p $(BUILD_DIR) && python main.py > $(BUILD_DIR)/main.tex
+.PHONY: clean
+clean:
+	trash build

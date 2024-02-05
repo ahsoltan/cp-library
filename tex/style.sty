@@ -1,4 +1,4 @@
-\documentclass[9pt,twoside]{extarticle}
+\ProvidesPackage{style}
 \usepackage[utf8]{inputenc}
 \usepackage{t1enc}
 \usepackage[a4paper,landscape,hmargin={0.5cm,0.5cm},vmargin={1cm,0.4cm}]{geometry}
@@ -12,12 +12,16 @@
 \usepackage{graphicx}
 \usepackage{fix-cm} 
 \usepackage[dvipsnames]{xcolor}
+\usepackage[explicit]{titlesec}
 
 % Multicol separator width
 \setlength{\columnseprule}{0.5pt}
 
-% Only show sections in ToC
+% Only show sections in ToC 
 \setcounter{tocdepth}{1}
+
+% Remove ToC title
+\renewcommand{\tableofcontents}{\@starttoc{toc}}
 
 % Basic code formatting
 \lstset{basicstyle=\footnotesize\ttfamily}
@@ -55,9 +59,26 @@
 \fancyfootoffset{0pt}
 \setlength{\headsep}{5pt}
 
-\begin{document}
-  \begin{multicols*}{3}
-    \tableofcontents
-%0%
-  \end{multicols*}
-\end{document}
+% Code title
+\newcommand*{\ctitle}[1]{{\large #1}}
+
+% Code headers
+\newcommand*{\cheader}[2]{%
+  {\par\noindent\footnotesize{\textbf{#1:} #2\par}}
+}
+
+% Code file
+\newcommand*{\cfile}[2][C++]{%
+  \smallskip
+  \hrule
+  \input{|"python preprocess.py #2 #1"}
+}
+
+% Big O symbol
+\newcommand*{\bigo}{\mathcal{O}}
+
+% Remove paragraph indentation
+\setlength{\parindent}{0pt}
+
+% Source code snippets 
+\newcommand*{\src}[1]{\texttt{\detokenize{#1}}}

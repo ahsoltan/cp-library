@@ -1,3 +1,0 @@
-Oddzielny plik na treść biblioteczki, może nawet nie w pythonie
-Ładny spis treści i rozdziały
-Makra itp w wersji contestowej

@@ -1,0 +1,30 @@
+\documentclass[9pt,twoside]{extarticle}
+\usepackage{style}
+
+\begin{document}
+  \begin{multicols*}{3}
+    \tableofcontents
+
+    \section{Struktury danych}
+    \ctitle{Drzewo falkowe}
+    \cheader{Opis}{%
+      Obsługuje zapytania typu \textit{podaj k-ty najmniejszy na przedziale} itp.~na statycznej tablicy.
+      Jeżeli czas albo pamięć są ciasne warto przeskalować liczby.
+      Niszczy tablicę.
+    }
+    \cheader{Czas}{$\bigo(\log A)$}
+    \cfile{../data/wavelet.cpp}
+
+    \ctitle{Ordered set}
+    \cheader{Opis}{Alternatywnie można użyć treapa albo trie.}
+    \cheader{Stosowanie}{\src{s.find_by_order(k)} i \src{s.order_of_key(k)}.}
+    \cheader{Czas}{$\bigo(\log n)$ z dużą stałą.}
+    \cfile{../data/pbds.cpp}
+
+    \section{Matma}
+    \subsection{Mnożniki Lagrange'a}
+    Jeżeli optymalizujemy $f(x_1, \dots, x_n)$, pod warunkami typu $g_k(x_1, \dots, x_n) = 0$ to
+    $x_1, \dots, x_n$ jest ekstremum lokalnym tylko jeżeli gradient $\nabla f(x_1, \dots, x_n)$ jest kombinacją liniową
+    gradientów $\nabla g_k(x_1, \dots x_n)$.
+  \end{multicols*}
+\end{document}
