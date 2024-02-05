@@ -21,10 +21,65 @@
     \cheader{Czas}{$\bigo(\log n)$ z dużą stałą.}
     \cfile{../data/pbds.cpp}
 
+    \section{Grafy}
+    \subsection{Przepływy}
+    \ctitle{Dinic}
+    \cheader{Opis}{Znajduje maksymalny przepływ.}
+    \cheader{Czas}{$\bigo(n^2m)$, ale tak na prawdę jest szybszy.}
+    \cfile{../graph/dinic.cpp}
+
+    \ctitle{Matching}
+    \cheader{Opis}{Dinic uproszczony do szukania największego skojarzenia.}
+    \cheader{Czas}{$\bigo(m\sqrt{n}))$}
+    \cfile{../graph/matching.cpp}
+
+    \ctitle{MCMF}
+    \cheader{Opis}{Znajduje przepływ o minimalnym koszcie.}
+    \cheader{Stosowanie}{Trzeba w \src{init} znaleźć najkrótsze ścieżki. Jeżeli są ujemne krawędzie trzeba puścić SPFA albo dynamika (jeżeli graf jest DAGiem).}
+    \cheader{Czas}{$\bigo(Fm \log n)$}
+    \cfile{../graph/mcmf.cpp}
+
+    \subsection{Grafy skierowane}
+    \ctitle{SCC}
+    \cheader{Opis}{Znajduje silne spójne składowe w kolejności topologicznej.}
+    \cheader{Czas}{$\bigo(n + m)$}
+    \cfile{../graph/scc.cpp}
+
     \section{Matma}
+    \subsection{Wielomiany}
+    \ctitle{FFT}
+    \cheader{Opis}{Mnoży dwa wielomiany o sumarycznej długości $2^{23}$ modulo $998244353$.}
+    \cheader{Czas}{$\bigo((n + m) \log (n + m))$}
+    \cfile{../math/fft.cpp}
+
     \subsection{Mnożniki Lagrange'a}
-    Jeżeli optymalizujemy $f(x_1, \dots, x_n)$, pod warunkami typu $g_k(x_1, \dots, x_n) = 0$ to
+    Jeżeli optymalizujemy $f(x_1, \dots, x_n)$ przy ograniczeniach typu $g_k(x_1, \dots, x_n) = 0$ to
     $x_1, \dots, x_n$ jest ekstremum lokalnym tylko jeżeli gradient $\nabla f(x_1, \dots, x_n)$ jest kombinacją liniową
     gradientów $\nabla g_k(x_1, \dots x_n)$.
+
+    \section{Teksty}
+    \ctitle{KMP}
+    \cheader{Opis}{Znajduje funkcje prefiksową. Można z niej skonstruować automat w czasie $\bigo(nA)$.}
+    \cheader{Czas}{$\bigo(n)$}
+    \cfile{../string/kmp.cpp}
+
+    \ctitle{Manacher}
+    \cheader{Opis}{Znajduje najdłuższy palindrom o każdym środku.}
+    \cheader{Stosowanie}{\src{p[2 * i]} - środek w $i$, \src{p[2 * i + 1]} - środek między $i$ a $i + 1$.}
+    \cheader{Czas}{$\bigo(n)$}
+    \cfile{../string/manacher.cpp}
+
+    \ctitle{Tablica sufiksowa}
+    \cheader{Opis}{%
+      Sortuje leksykograficznie wszystkie sufiksy słowa.
+      Można zachować wszystkie tablice \src{rnk} aby porównywać leksykograficznie podsłowa w $\bigo(1)$.
+    }
+    \cheader{Czas}{$\bigo(n \log n)$}
+    \cfile{../string/sa.cpp}
+
+    \ctitle{Z}
+    \cheader{Opis}{Znajduje funkcję Z.}
+    \cheader{Czas}{$\bigo(n)$}
+    \cfile{../string/z.cpp}
   \end{multicols*}
 \end{document}

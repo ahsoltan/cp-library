@@ -16,6 +16,9 @@ Implement:
 Fix:
 * Add type template to dinic/MCMF
 * Add min cut and stuff to dinic/matching
+* Add nicer sections and ToC to pdf, fix spacing
+* Compressed macros
+* Fix "broken pipe error" when building pdf
 
 Libraries:
 * https://github.com/ecnerwala/cp-book/
