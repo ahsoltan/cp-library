@@ -1,12 +1,12 @@
 Learn:
 * DMST
 * BIT (1D/2D)
+- Linear algebra (Gauss/Determinant/Berlekamp-Massey)
+- CRT
+- Polynomial operations
 - Link-cut tree
 - Suffix automaton
 - Palindrome tree
-- Polynomial operations
-- Berlekamp-Massey (linear algebra)
-- CRT
 
 Implement:
 * 2-SAT
@@ -17,7 +17,6 @@ Fix:
 * Add type template to dinic/MCMF
 * Add min cut and stuff to dinic/matching
 * Add nicer sections and ToC to pdf, fix spacing
-* Compressed macros
 
 Libraries:
 * https://github.com/ecnerwala/cp-book/
