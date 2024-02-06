@@ -13,15 +13,24 @@
 \usepackage{fix-cm} 
 \usepackage[dvipsnames]{xcolor}
 \usepackage[explicit]{titlesec}
+\usepackage{tocloft}
 
 % Multicol separator width
 \setlength{\columnseprule}{0.5pt}
 
-% Only show sections in ToC 
+% Custom ToC
 \setcounter{tocdepth}{1}
+\renewcommand{\contentsname}{}
+\renewcommand{\cftbeforetoctitleskip}{-45pt}
+\renewcommand{\cftaftertoctitleskip}{10pt}
+\renewcommand{\cftbeforesecskip}{11pt}
+\renewcommand{\cftsecfont}{\large\bfseries}
+\renewcommand{\cftdotsep}{4.5}
 
-% Remove ToC title
-\renewcommand{\tableofcontents}{\@starttoc{toc}}
+% Custom sections
+\titleformat{\section}{\huge\bfseries}{}{0pt}{\underline{#1} (\thesection)}
+\titleformat{\subsection}{\normalfont\LARGE\bfseries}{}{0pt}{\thesubsection \quad #1}
+\titlespacing{\subsection}{0pt}{-1.3ex}{.4ex}
 
 % Empty language
 \lstdefinelanguage{raw}{}
