@@ -2,6 +2,7 @@
 \usepackage{style}
 
 \begin{document}
+  \pagestyle{fancy}
   \begin{multicols*}{3}
     \tableofcontents
 
@@ -25,44 +26,44 @@
       Jeżeli czas albo pamięć są ciasne warto przeskalować liczby.
       Niszczy tablicę.
     }
-    \cheader{Czas}{$\bigo(\log A)$}
+    \cheader{Czas}{\bigo{\log A}}
     \cfile{../data/wavelet.cpp}
 
     \ctitle{Ordered set}
     \cheader{Opis}{Alternatywnie można użyć treapa albo trie.}
     \cheader{Stosowanie}{\src{s.find_by_order(k)} i \src{s.order_of_key(k)}.}
-    \cheader{Czas}{$\bigo(\log n)$ z dużą stałą.}
+    \cheader{Czas}{\bigo{\log n} z dużą stałą.}
     \cfile{../data/pbds.cpp}
 
     \section{Grafy}
     \subsection{Przepływy}
     \ctitle{Dinic}
     \cheader{Opis}{Znajduje maksymalny przepływ.}
-    \cheader{Czas}{$\bigo(n^2m)$, ale tak na prawdę jest szybszy.}
+    \cheader{Czas}{\bigo{n^2m}, ale w rzeczywistości szybszy.}
     \cfile{../graph/dinic.cpp}
 
     \ctitle{Matching}
     \cheader{Opis}{Dinic uproszczony do szukania największego skojarzenia.}
-    \cheader{Czas}{$\bigo(m\sqrt{n})$}
+    \cheader{Czas}{\bigo{m\sqrt{n}}}
     \cfile{../graph/matching.cpp}
 
     \ctitle{MCMF}
     \cheader{Opis}{Znajduje przepływ o minimalnym koszcie.}
     \cheader{Stosowanie}{Trzeba w \src{init} znaleźć najkrótsze ścieżki. Jeżeli są ujemne krawędzie trzeba puścić SPFA albo dynamika (jeżeli graf jest DAGiem).}
-    \cheader{Czas}{$\bigo(Fm \log n)$}
+    \cheader{Czas}{\bigo{Fm \log n}}
     \cfile{../graph/mcmf.cpp}
 
     \subsection{Grafy skierowane}
     \ctitle{SCC}
     \cheader{Opis}{Znajduje silne spójne składowe w kolejności topologicznej.}
-    \cheader{Czas}{$\bigo(n + m)$}
+    \cheader{Czas}{\bigo{n + m}}
     \cfile{../graph/scc.cpp}
 
     \section{Matma}
     \subsection{Wielomiany}
     \ctitle{FFT}
     \cheader{Opis}{Mnoży dwa wielomiany o sumarycznej długości $2^{23}$ modulo $998244353$.}
-    \cheader{Czas}{$\bigo((n + m) \log (n + m))$}
+    \cheader{Czas}{\bigo{(n + m) \log (n + m)}}
     \cfile{../math/fft.cpp}
 
     \subsection{Mnożniki Lagrange'a}
@@ -72,14 +73,14 @@
 
     \section{Teksty}
     \ctitle{KMP}
-    \cheader{Opis}{Znajduje funkcje prefiksową. Można z niej skonstruować automat w czasie $\bigo(nA)$.}
-    \cheader{Czas}{$\bigo(n)$}
+    \cheader{Opis}{Znajduje funkcje prefiksową. Można z niej skonstruować automat w czasie \bigo{nA}.}
+    \cheader{Czas}{\bigo{n}}
     \cfile{../string/kmp.cpp}
 
     \ctitle{Manacher}
     \cheader{Opis}{Znajduje najdłuższy palindrom o każdym środku.}
     \cheader{Stosowanie}{\src{p[2 * i]} - środek w $i$, \src{p[2 * i + 1]} - środek między $i$ a $i + 1$.}
-    \cheader{Czas}{$\bigo(n)$}
+    \cheader{Czas}{\bigo{n}}
     \cfile{../string/manacher.cpp}
 
     \ctitle{Tablica sufiksowa}
@@ -87,12 +88,12 @@
       Sortuje leksykograficznie wszystkie sufiksy słowa.
       Można zachować wszystkie tablice \src{rnk} aby porównywać leksykograficznie podsłowa w $\bigo(1)$.
     }
-    \cheader{Czas}{$\bigo(n \log n)$}
+    \cheader{Czas}{\bigo{n \log n}}
     \cfile{../string/sa.cpp}
 
     \ctitle{Z}
     \cheader{Opis}{Znajduje funkcję Z.}
-    \cheader{Czas}{$\bigo(n)$}
+    \cheader{Czas}{\bigo{n}}
     \cfile{../string/z.cpp}
   \end{multicols*}
 \end{document}
