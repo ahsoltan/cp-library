@@ -47,17 +47,28 @@
     \cheader{Czas}{\bigo{n^2m}, ale w rzeczywistości szybszy.}
     \cfile{../graph/dinic.cpp}
 
-    \ctitle{Matching}
-    \cheader{Opis}{Dinic uproszczony do szukania największego skojarzenia.}
-    \cheader{Czas}{\bigo{m\sqrt{n}}}
-    \cfile{../graph/matching.cpp}
-
     \ctitle{MCMF}
     \cheader{Opis}{Znajduje przepływ o minimalnym koszcie.}
     \cheader{Stosowanie}{Trzeba w \src{init} znaleźć najkrótsze ścieżki. Jeżeli są ujemne krawędzie trzeba puścić SPFA albo dynamika (jeżeli graf jest DAGiem).}
     \cheader{Czas}{\bigo{Fm \log n}}
     \cfile{../graph/mcmf.cpp}
 
+    \subsubsection{Przepływy z wymaganiami}
+    Szukamy przepływu $\leq F$ takiego, że $f_i \geq d_i$ dla każdej krawędzi.
+    Tworzymy nowe źródło $s'$ i ujście $t'$.
+    Następnie dodajemy krawędzie
+    \begin{compactitem}
+    \item $(u_i, t', d_i)$, $(s', v_i, d_i)$, $(u_i, v_i, c_i - d_i)$ zamiast $(u_i, v_i, c_i, d_i)$ 
+      \item $(t, s, F)$
+    \end{compactitem}
+    Przepływ spełnia wymagania jeżeli maksymalnie wypełnia wszystkie krawędzie $s'$.
+
+    \subsection{Grafy dwudzielne}
+    \ctitle{Matching}
+    \cheader{Opis}{Dinic uproszczony do szukania największego skojarzenia.}
+    \cheader{Czas}{\bigo{m\sqrt{n}}}
+    \cfile{../graph/matching.cpp}
+    
     \subsection{Grafy skierowane}
     \ctitle{SCC}
     \cheader{Opis}{Znajduje silne spójne składowe w kolejności topologicznej.}
