@@ -14,7 +14,6 @@ Implement:
 
 Fix:
 * Add type template to dinic/MCMF
-* Add min cut and stuff to dinic/matching
 
 Libraries:
 * https://github.com/ecnerwala/cp-book/

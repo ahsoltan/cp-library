@@ -58,7 +58,7 @@
     Tworzymy nowe źródło $s'$ i ujście $t'$.
     Następnie dodajemy krawędzie
     \begin{compactitem}
-    \item $(u_i, t', d_i)$, $(s', v_i, d_i)$, $(u_i, v_i, c_i - d_i)$ zamiast $(u_i, v_i, c_i, d_i)$ 
+      \item $(u_i, t', d_i)$, $(s', v_i, d_i)$, $(u_i, v_i, c_i - d_i)$ zamiast $(u_i, v_i, c_i, d_i)$ 
       \item $(t, s, F)$
     \end{compactitem}
     Przepływ spełnia wymagania jeżeli maksymalnie wypełnia wszystkie krawędzie $s'$.
@@ -68,7 +68,21 @@
     \cheader{Opis}{Dinic uproszczony do szukania największego skojarzenia.}
     \cheader{Czas}{\bigo{m\sqrt{n}}}
     \cfile{../graph/matching.cpp}
-    
+
+    \subsubsection{Rozszerzone twierdzenie K\"oniga}
+    W grafie dwudzielnym zachodzi
+    \begin{compactitem}
+      \item $\mathrm{nk} = \mathrm{pw}$
+      \item $\mathrm{nk} + \mathrm{pk} = n$
+      \item $\mathrm{pw} + \mathrm{nw} = n$
+    \end{compactitem}
+    oraz
+    \begin{compactitem}
+      \item pw to zbiór wierzchołków na brzegu min-cut
+      \item nw to dopełnienie pw
+      \item pk to nk z dodanymi pojedynczymi krawędziami każdego nieskojarzonego wierzchołka
+    \end{compactitem}
+
     \subsection{Grafy skierowane}
     \ctitle{SCC}
     \cheader{Opis}{Znajduje silne spójne składowe w kolejności topologicznej.}
