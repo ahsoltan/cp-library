@@ -11,7 +11,6 @@ Learn:
 Implement:
 * 2-SAT
 * Pragmas
-* Treap
 
 Fix:
 * Add type template to dinic/MCMF
