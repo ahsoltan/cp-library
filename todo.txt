@@ -1,7 +1,10 @@
 Learn:
 * DMST
 * BIT (1D/2D)
-- Linear algebra (Gauss/Determinant/Berlekamp-Massey)
+- Linear algebra
+  - Gauss
+  - Determinant
+  - Berlekamp-Massey
 - CRT
 - Polynomial operations
 - Link-cut tree
@@ -9,11 +12,15 @@ Learn:
 - Palindrome tree
 
 Implement:
-* 2-SAT
 * Pragmas
+* Extended GCD + Linear diophantine equations
+* Fast matrix multiplication + 4 russians
 
 Fix:
 * Add type template to dinic/MCMF
+* Add scaling to dinic? (benchmark performance)
+* Cleanup MCMF
+* Rework wavelet (again)
 
 Libraries:
 * https://github.com/ecnerwala/cp-book/
