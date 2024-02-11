@@ -22,6 +22,7 @@ vector<int> manacher(const string& s) {
     if (t[i - p[i] + 1] == '#') {
       p[i]--;
     }
+    p[i] = (p[i] + (1 - i % 2)) / 2;
   }
   return p;
 }
