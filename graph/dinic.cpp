@@ -23,7 +23,7 @@ struct dinic {
     adj[v].push_back({u, i, 0});
   }
 
-  bool bfs(int s, int t) {
+  bool bfs(int s, int t, int r) {
     q.clear();
     lvl.assign(n, -1);
     lvl[s] = 0;
@@ -31,7 +31,7 @@ struct dinic {
     for (int i = 0; i < ssize(q); i++) {
       int u = q[i];
       for (edge& e : adj[u]) {
-        if (e.cap > 0 && lvl[e.to] == -1) {
+        if (e.cap >= r && lvl[e.to] == -1) {
           lvl[e.to] = lvl[u] + 1;
           q.push_back(e.to);
           if (e.to == t) {
@@ -66,9 +66,11 @@ struct dinic {
 
   ll flow(int s, int t, ll cap) {
     ll f = 0;
-    while (f < cap && bfs(s, t)) {
-      it.assign(n, 0);
-      f += dfs(s, t, cap - f);
+    for (int i = 29; i >= 0; i--) {
+      while (f < cap && bfs(s, t, 1 << i)) {
+        it.assign(n, 0);
+        f += dfs(s, t, cap - f);
+      }
     }
     return f;
   }

@@ -43,8 +43,11 @@
     \section{Grafy}
     \subsection{Przepływy}
     \ctitle{Dinic}
-    \cheader{Opis}{Znajduje największy przepływ.}
-    \cheader{Czas}{\bigo{n^2m}, ale w rzeczywistości szybszy.}
+    \cheader{Opis}{%
+      Znajduje największy przepływ.
+      Jeżeli nie wchodzi czasowo można spróbować usunąć skalowanie krawędzi.
+    }
+    \cheader{Czas}{\bigo{nm\log U}}
     \cfile{../graph/dinic.cpp}
 
     \ctitle{MCMF}
