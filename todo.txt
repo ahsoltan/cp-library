@@ -17,9 +17,7 @@ Implement:
 * Fast matrix multiplication + 4 russians
 
 Fix:
-* Add type template to dinic/MCMF
 * Add scaling to dinic? (benchmark performance)
-* Cleanup MCMF
 * Rework wavelet (again)
 
 Libraries:

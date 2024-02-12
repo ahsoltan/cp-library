@@ -1,4 +1,6 @@
-const int INF = 1e9;
+#include <bits/extc++.h>
+
+ll INF64 = 2e18;
 
 struct MCMF {
   struct edge {
@@ -6,40 +8,37 @@ struct MCMF {
     int cap, cost;
   };
 
-  struct ds {
-    int u, val;
-
-    friend bool operator<(const ds& lhs, const ds& rhs) {
-      return lhs.val > rhs.val;
+  struct cmp {
+    bool operator()(const auto& l, const auto& r) const {
+      return l.second > r.second;
     }
   };
 
   int n;
   vector<vector<edge>> adj;
-  vector<array<int, 3>> f;
-  int c = 0;
+  vector<ll> dst;
+  ll c = 0;
+  __gnu_pbds::priority_queue<pair<ll, int>, cmp> q;
+  vector<decltype(q)::point_iterator> its;
+  vector<int> id;
 
   MCMF(int _n) {
     n = _n;
     adj.resize(n);
-    f.resize(n);
+    id.resize(n);
   }
 
   void add_edge(int u, int v, int cap, int cost) {
-    if (u == v) {
-      assert(cost >= 0);
-      return;
-    }
-    int i = adj[u].size();
-    int j = adj[v].size();
+    int i = ssize(adj[u]);
+    int j = ssize(adj[v]) + (u == v);
     adj[u].push_back({v, j, cap, cost});
     adj[v].push_back({u, i, 0, -cost});
   }
 
-  void reduce(const vector<int>& dst, int t) {
+  void reduce(int t) {
     for (int i = 0; i < n; i++) {
       for (edge& e : adj[i]) {
-        if (dst[i] < INF && dst[e.to] < INF) {
+        if (dst[i] != INF64 && dst[e.to] != INF64) {
           e.cost += dst[i] - dst[e.to];
         }
       }
@@ -47,83 +46,52 @@ struct MCMF {
     c += dst[t];
   }
 
-  bool init(int s, int t) {
-    vector<int> dst(n, INF);
-    queue<int> q;
-    vector<bool> inq(n);
-    dst[s] = 0;
-    q.push(s);
-    inq[s] = true;
-    while (!q.empty()) {
-      int u = q.front();
-      q.pop();
-      inq[u] = false;
-      for (edge& e : adj[u]) {
-        if (e.cap > 0 && dst[u] + e.cost < dst[e.to]) {
-          dst[e.to] = dst[u] + e.cost;
-          if (!inq[e.to]) {
-            q.push(e.to);
-            inq[e.to] = true;
-          }
-        }
-      }
-    }
-    if (dst[t] == INF) {
-      return false;
-    }
-    reduce(dst, t);
-    return true;
-  }
-
   bool dijkstra(int s, int t) {
-    vector<int> dst(n, INF);
-    priority_queue<ds> q;
+    dst.assign(n, INF64);
+    its.assign(n, q.end());
     dst[s] = 0;
-    q.push({0, s});
+    q.push({s, 0});
     while (!q.empty()) {
-      auto [u, d] = q.top();
+      int u = q.top().first;
       q.pop();
-      if (d != dst[u]) {
-        continue;
-      }
-      int i = 0;
       for (edge& e : adj[u]) {
         if (e.cap > 0) {
-          int dd = d + e.cost;
-          if (dd < dst[e.to]) {
-            dst[e.to] = dd;
-            f[e.to] = {u, i, e.rev};
-            q.push({e.to, dd});
+          ll d = dst[u] + e.cost;
+          if (d < dst[e.to]) {
+            dst[e.to] = d;
+            if (its[e.to] == q.end()) {
+              its[e.to] = q.push({e.to, dst[e.to]});
+            } else {
+              q.modify(its[e.to], {e.to, dst[e.to]});
+            }
+            id[e.to] = e.rev;
           }
         }
-        i++;
       }
     }
-    if (dst[t] == INF) {
-      return false;
-    }
-    reduce(dst, t);
-    return true;
+    reduce(t);
+    return dst[t] != INF64;
   }
 
-  pair<int, int> build(int s, int t, int cap) {
-    if (!init(s, t)) {
-      return {0, 0};
-    }
-    int flow = 0;
-    int cost = 0;
-    while (flow < cap && dijkstra(s, t)) {
-      int add = cap - flow;
-      for (int i = t; i != s; i = f[i][0]) {
-        add = min(add, adj[f[i][0]][f[i][1]].cap);
+  pair<ll, ll> flow(int s, int t, ll cap) {
+    ll ff = 0;
+    ll cc = 0;
+    while (ff < cap && dijkstra(s, t)) {
+      ll f = cap - ff;
+      for (int i = t; i != s;) {
+        edge& e = adj[i][id[i]];
+        f = min(f, (ll)adj[e.to][e.rev].cap);
+        i = e.to;
       }
-      flow += add;
-      cost += c * add;
-      for (int i = t; i != s; i = f[i][0]) {
-        adj[f[i][0]][f[i][1]].cap -= add;
-        adj[i][f[i][2]].cap += add;
+      for (int i = t; i != s;) {
+        edge& e = adj[i][id[i]];
+        e.cap += f;
+        adj[e.to][e.rev].cap -= f;
+        i = e.to;
       }
+      ff += f;
+      cc += f * c;
     }
-    return {flow, cost};
+    return {ff, cc};
   }
 };

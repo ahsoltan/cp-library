@@ -43,13 +43,16 @@
     \section{Grafy}
     \subsection{Przepływy}
     \ctitle{Dinic}
-    \cheader{Opis}{Znajduje maksymalny przepływ.}
+    \cheader{Opis}{Znajduje największy przepływ.}
     \cheader{Czas}{\bigo{n^2m}, ale w rzeczywistości szybszy.}
     \cfile{../graph/dinic.cpp}
 
     \ctitle{MCMF}
-    \cheader{Opis}{Znajduje przepływ o minimalnym koszcie.}
-    \cheader{Stosowanie}{Trzeba w \src{init} znaleźć najkrótsze ścieżki. Jeżeli są ujemne krawędzie trzeba puścić SPFA albo dynamika (jeżeli graf jest DAGiem).}
+    \cheader{Opis}{Znajduje największy przepływ o najmniejszym koszcie.}
+    \cheader{Stosowanie}{%
+      Jeżeli są ujemne krawędzie, przed pusczeniem \src{flow} w \src{dst} trzeba
+      policzyć najkrótsze ścieżki z \src{s} i puścić \src{reduce(t)}.
+    }
     \cheader{Czas}{\bigo{Fm \log n}}
     \cfile{../graph/mcmf.cpp}
 
