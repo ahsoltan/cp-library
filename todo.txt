@@ -15,7 +15,6 @@ Implement:
 * Pragmas
 * Extended GCD + Linear diophantine equations
 * Fast matrix multiplication + 4 russians
-* HLD (tree template)
 
 Fix:
 * Rework wavelet (again)
