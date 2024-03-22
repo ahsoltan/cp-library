@@ -1,20 +1,18 @@
 Learn:
+* Polynomial operations
 * DMST
 * BIT (1D/2D)
-- Linear algebra
-  - Gauss
-  - Determinant
-  - Berlekamp-Massey
+- Berlekamp-Massey
 - CRT
-- Polynomial operations
-- Link-cut tree
+* Link-cut tree
 - Suffix automaton
 - Palindrome tree
 
 Implement:
 * Pragmas
+* Gauss/Determinant
 * Extended GCD + Linear diophantine equations
-* Fast matrix multiplication + 4 russians
+* Fast matrix multiplication + 4 russians (?)
 
 Fix:
 * Rework wavelet (again)
