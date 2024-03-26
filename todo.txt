@@ -1,5 +1,13 @@
+Add:
+* Pragmas
+* Geometry (complex?)
+* Gauss, determinant
+* Extended GCD, LDE
+* Erdos-Gallai, Gale-Ryser theorems
+
 Learn:
-* Polynomial operations
+* CRT
+* O(n log n) polynomial exponentiation
 * DMST
 * BIT (1D/2D)
 - Berlekamp-Massey
@@ -8,14 +16,9 @@ Learn:
 - Suffix automaton
 - Palindrome tree
 
-Implement:
-* Pragmas
-* Gauss/Determinant
-* Extended GCD + Linear diophantine equations
-* Fast matrix multiplication + 4 russians (?)
-
 Fix:
 * Rework wavelet (again)
+* Fix/Rework treap (doesn't compile)
 
 Libraries:
 * https://github.com/ecnerwala/cp-book/
